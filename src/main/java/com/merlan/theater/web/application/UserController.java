@@ -1,10 +1,8 @@
 package com.merlan.theater.web.application;
 /**
- * @author
+ * @author meilan_xie
  */
-/**
- * TODO: TO ADD FUNCTION
- */
+
 import com.merlan.theater.business.service.UserService;
 import com.merlan.theater.data.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Set;
+
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
@@ -21,8 +21,42 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method= RequestMethod.GET)
-    public String getUserByEmail(@RequestParam(value="mail", required=false)String mailString, Model model){
+    @RequestMapping(value="/save", method= RequestMethod.POST)
+    public String saveUser(@RequestParam(value="firstName", required=true)String firstName,
+                           @RequestParam(value="LastName", required=false)String lastName,
+                           @RequestParam(value="email", required=true)String emailString,
+                           Model model){
+        User user = this.userService.saveUser(firstName, lastName, emailString, null);
+        model.addAttribute("user", user);
+        return "user";
+    }
+
+    @RequestMapping(value="/remove", method= RequestMethod.POST)
+    public String removeUser(@RequestParam(value="firstName", required=false)String firstName,
+                           @RequestParam(value="LastName", required=false)String lastName,
+                           @RequestParam(value="email", required=true)String emailString,
+                           @RequestParam(value="userId", required=false)String userId,
+                           Model model){
+        User user = this.userService.removeUser(firstName, lastName, emailString, userId);
+        model.addAttribute("user", user);
+        return "user";
+    }
+
+    @RequestMapping(value="/all", method= RequestMethod.GET)
+    public String getAll(Model model){
+        Set<User> users = this.userService.getAll();
+        model.addAttribute("user", users);
+        return "user";
+    }
+
+    @RequestMapping(value="/byId", method= RequestMethod.GET)
+    public String getUserById(@RequestParam(value="userId", required=true)Long userId, Model model){
+        User user = this.userService.getUserById(userId);
+        model.addAttribute("user", user);
+        return "user";
+    }
+    @RequestMapping(value="/byNail", method= RequestMethod.GET)
+    public String getUserByEmail(@RequestParam(value="mail", required=true)String mailString, Model model){
         User user = this.userService.getUserByEmail(mailString);
         model.addAttribute("user", user);
         return "user";

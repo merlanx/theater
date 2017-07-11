@@ -38,8 +38,8 @@ public class BookingController {
             User user = new User();
             List<Long> seats = new ArrayList<>();
             double totalPrices = this.bookingtService.getTicketsPrice(event, user, seats);
-            model.addAttribute("totalPrices", totalPrices);
-            return "totalPrices";
+            model.addAttribute("ticket", totalPrices);
+            return "ticket";
         }
 
     @RequestMapping(value="/booking",method= RequestMethod.POST)
@@ -52,8 +52,8 @@ public class BookingController {
         User user = new User();
         List<Long> seats = new ArrayList<>();
         List<Ticket> tickets = this.bookingtService.bookTickets(event, user, seats);
-        model.addAttribute("tickets", tickets);
-        return "tickets";
+        model.addAttribute("ticket", tickets);
+        return "ticket";
     }
 
     @RequestMapping(value="/purchased", method= RequestMethod.GET)
@@ -62,7 +62,7 @@ public class BookingController {
                                               Model model){
         Event event = new Event();
         List<Ticket> tickets = this.bookingtService.getPurchasedTicketsForEvent(event);
-        model.addAttribute("PurchasedTicketsForEvent", tickets);
-        return "PurchasedTicketsForEvent";
+        model.addAttribute("ticket", tickets);
+        return "ticket";
     }
 }

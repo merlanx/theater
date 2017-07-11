@@ -36,7 +36,7 @@ public class BookingService {
     /**
      * Get all available/unsold tickets for event for specific date and Time
      **/
-    public List<Ticket> getAllTicketsForDate(String dateString){
+    public @Nullable List<Ticket> getAllTicketsForDate(String dateString){
         return null;
     }
     /**
@@ -51,14 +51,14 @@ public class BookingService {
     * If user is registered, then booking information is stored for that user (in the tickets collection).
     * Purchased tickets for particular event should be stored.
     **/
-    public List<Ticket> bookTickets(@Nonnull Event event,  @Nullable User user,  @Nullable List<Long> seats) {
+    public  @Nullable List<Ticket> bookTickets(@Nonnull Event event,  @Nullable User user,  @Nullable List<Long> seats) {
 
         return null;
     }
     /**
     * Get all purchased tickets for event for specific date and Time
     **/
-    public List<Ticket> getPurchasedTicketsForEvent(@Nullable Event event) {
+    public  @Nullable List<Ticket> getPurchasedTicketsForEvent(@Nullable Event event) {
 
     return null;
 }
