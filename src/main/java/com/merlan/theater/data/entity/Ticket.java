@@ -21,7 +21,7 @@ public class Ticket implements Comparable<Ticket> {
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "EVENT_ID")
     private Event event;
-    @Column(name = "seat")
+    @Column(name = "SEAT")
     private long seat;
     @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "PRICING_STRATEGY_ID")

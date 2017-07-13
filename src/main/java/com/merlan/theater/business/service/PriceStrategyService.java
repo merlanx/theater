@@ -1,19 +1,18 @@
 package com.merlan.theater.business.service;
 
 /**
- * @author
+ * @author meilan xie
  */
 
 import com.merlan.theater.business.domain.EventRating;
 import com.merlan.theater.data.entity.Ticket;
 import com.merlan.theater.data.entity.User;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-/**
- * TODO: TO ADD FUNCTION
- */
+@Service
 public class PriceStrategyService {
 
     /**
