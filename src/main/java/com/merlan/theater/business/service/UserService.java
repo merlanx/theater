@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.time.LocalDate;
 import java.util.Set;
 
 /**
@@ -22,21 +23,20 @@ public class UserService {
      * @param firstName firstName of the user
      * @param lastName lastName of the user
      * @param email Email of the user
+     * @param birthday Birthday of the user
      * @param boughtTickets total amount of tickets that the user bought
      * @return a updated/new user
      */
-    public @Nullable User saveUser(@Nonnull String firstName, @Nullable String lastName, @Nonnull String email,@Nullable Integer boughtTickets){
+    public @Nullable User saveUser(@Nonnull String firstName, @Nullable String lastName, @Nonnull String email,@Nullable LocalDate birthday, @Nullable Integer boughtTickets){
         return null;
     }
     /**
      * Remove a user
-     * @param firstName firstName of the user
-     * @param lastName lastName of the user
      * @param email Email of the user
      * @param userId Id of the user
      * @return removed user or empty
      */
-    public @Nullable User removeUser(@Nullable String firstName,@Nullable String lastName, @Nonnull String email, @Nullable String userId){
+    public @Nullable User removeUser(@Nonnull String email, @Nullable String userId){
         return null;
     }
     /**

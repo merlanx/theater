@@ -1,6 +1,7 @@
 package com.merlan.theater.data.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -19,6 +20,8 @@ public class User {
     private String lastName;
     @Column(name="EMAIL")
     private String email;
+    @Column(name="BIRTHDAY")
+    private LocalDate birthday;
     @Column(name="NUMBER_OF_TICKETS")
     private int numberOfTickets;
 
@@ -52,6 +55,14 @@ public class User {
 
     public void setNumberOfTickets(int numberOfTickets) {
         this.numberOfTickets = numberOfTickets;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     @Override

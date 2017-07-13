@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Controller
@@ -25,19 +26,18 @@ public class UserController {
     public String saveUser(@RequestParam(value="firstName", required=true)String firstName,
                            @RequestParam(value="LastName", required=false)String lastName,
                            @RequestParam(value="email", required=true)String emailString,
+                           @RequestParam(value="birthday", required=false)LocalDate birthday,
                            Model model){
-        User user = this.userService.saveUser(firstName, lastName, emailString, null);
+        User user = this.userService.saveUser(firstName, lastName, emailString, birthday, null);
         model.addAttribute("user", user);
         return "user";
     }
 
     @RequestMapping(value="/remove", method= RequestMethod.POST)
-    public String removeUser(@RequestParam(value="firstName", required=false)String firstName,
-                           @RequestParam(value="LastName", required=false)String lastName,
-                           @RequestParam(value="email", required=true)String emailString,
+    public String removeUser(@RequestParam(value="email", required=true)String emailString,
                            @RequestParam(value="userId", required=false)String userId,
                            Model model){
-        User user = this.userService.removeUser(firstName, lastName, emailString, userId);
+        User user = this.userService.removeUser(emailString, userId);
         model.addAttribute("user", user);
         return "user";
     }
