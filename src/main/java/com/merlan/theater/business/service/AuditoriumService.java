@@ -30,7 +30,7 @@ public class AuditoriumService {
     }
 
     /**
-     * Finding auditorium by name
+     * Finding auditorium by data
      * 
      * @param name
      *            Name of the auditorium

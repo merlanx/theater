@@ -80,7 +80,7 @@ public class EventService {
      * @param from Start date
      * @param to   End date inclusive
      * @return Set of events
-     * Finding event by name
+     * Finding event by data
      */
     public @Nullable Set<Event> getEventForDateRange(@Nonnull LocalDate from, @Nonnull LocalDate to){
         return null;

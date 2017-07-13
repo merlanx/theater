@@ -43,9 +43,7 @@ public class UserService {
      * Finding all users
      * @return all users or <code>null</code>
      */
-    public @Nullable Set<User> getAll(){
-        return null;
-    }
+    public @Nullable Set<User> getAll(){return userRepository.findAll();}
     /**
      * Finding user by email
      * 
@@ -54,7 +52,7 @@ public class UserService {
      * @return found user or <code>null</code>
      */
     public @Nullable User getUserByEmail(@Nonnull String email){
-        return null;
+        return userRepository.findByEmail(email);
     }
 
     /**

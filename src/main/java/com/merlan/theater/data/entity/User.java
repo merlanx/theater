@@ -1,7 +1,7 @@
 package com.merlan.theater.data.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USER_ID")
-    private long id;
+    private Long userId;
 
     @Column(name="FIRST_NAME")
     private String firstName;
@@ -21,9 +21,25 @@ public class User {
     @Column(name="EMAIL")
     private String email;
     @Column(name="BIRTHDAY")
-    private LocalDate birthday;
+    private Date birthday;
     @Column(name="NUMBER_OF_TICKETS")
     private int numberOfTickets;
+
+    public User() {};
+    public User(String firstName, String lastName, String email, Date birthday) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.birthday = birthday;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -57,11 +73,11 @@ public class User {
         this.numberOfTickets = numberOfTickets;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

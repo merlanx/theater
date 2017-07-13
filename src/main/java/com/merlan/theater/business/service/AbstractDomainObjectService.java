@@ -39,10 +39,10 @@ public interface AbstractDomainObjectService<T> {
     public @Nullable T getById(@Nonnull Long id);
 
     /**
-     * Getting object by name from storage
+     * Getting object by data from storage
      *
      * @param name
-     *            name of the object
+     *            data of the object
      * @return Found object or <code>null</code>
      */
     public @Nullable T getByName(@Nonnull String name);

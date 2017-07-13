@@ -17,7 +17,7 @@ public class Auditorium {
     private String name;
     @Column(name="NUMBER_OF_SEATS")
     private long numberOfSeats;
-    //@Column(name="VIP_SEATS")
+    //@Column(data="VIP_SEATS")
     //private Set<Long> vipSeats = Collections.emptySet();
 
     public long getId() {
