@@ -55,9 +55,9 @@ public class UserController {
         model.addAttribute("user", user);
         return "user";
     }
-    @RequestMapping(value="/byNail", method= RequestMethod.GET)
-    public String getUserByEmail(@RequestParam(value="mail", required=true)String mailString, Model model){
-        User user = this.userService.getUserByEmail(mailString);
+    @RequestMapping(value="/byEmail", method= RequestMethod.GET)
+    public String getUserByEmail(@RequestParam(value="email", required=true)String email, Model model){
+        User user = this.userService.getUserByEmail(email);
         model.addAttribute("user", user);
         return "user";
    }

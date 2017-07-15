@@ -63,7 +63,7 @@ public class UserService {
      * @return found user or <code>null</code>
      */
     public @Nullable User getUserById(@Nonnull Long userId){
-        return null;
+        return userRepository.findByUserId(userId);
     }
 
 }
