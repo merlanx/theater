@@ -26,3 +26,53 @@ INSERT INTO USER VALUES(108,'Bell','David','dbell2l@wp.com','1985-07-18',0)
 COMMIT
 INSERT INTO USER VALUES(109,'Berry','Paula','pberry1z@admin.ch','1985-07-18',0)
 COMMIT
+INSERT INTO USER VALUES(110,'Roy','Adams','radams1v@epam.com','1985-01-18',10)
+COMMIT
+INSERT INTO USER VALUES(111,'Martin','Adams','madams2b@epam.edu','1985-01-22',2)
+COMMIT
+INSERT INTO USER VALUES(112,'Roger','Alvarez','ralvarezk@epam.com','1985-01-30',1)
+COMMIT
+INSERT INTO USER VALUES(113,'Anne','Alvarez','aalvarez1y@epam.com','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(114,'Ann','Alvarez','aalvarez20@epam.net','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(115,'Betty','Anderson','banderson14@epam.com','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(116,'Laura','Anderson','landerson24@epam.us','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(117,'Christopher','Armstrong','carmstrong2p@epam.com','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(118,'David','Bell','dbell2l@epam.com','1985-01-18',0)
+COMMIT
+INSERT INTO USER VALUES(119,'Paula','Berry','pberry1z@epam.ch','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=110
+INSERT INTO USER VALUES(110,'Roy','Adams','radams1v@epam.com','1985-01-18',10)
+COMMIT
+DELETE FROM USER WHERE USER_ID=111
+INSERT INTO USER VALUES(111,'Martin','Adams','madams2b@epam.edu','1985-01-22',2)
+COMMIT
+DELETE FROM USER WHERE USER_ID=112
+INSERT INTO USER VALUES(112,'Roger','Alvarez','ralvarezk@epam.com','1985-01-30',1)
+COMMIT
+DELETE FROM USER WHERE USER_ID=113
+INSERT INTO USER VALUES(113,'Anne','Alvarez','aalvarez1y@epam.com','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=114
+INSERT INTO USER VALUES(114,'Ann','Alvarez','aalvarez20@epam.net','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=115
+INSERT INTO USER VALUES(115,'Betty','Anderson','banderson14@epam.com','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=116
+INSERT INTO USER VALUES(116,'Laura','Anderson','landerson24@epam.us','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=117
+INSERT INTO USER VALUES(117,'Christopher','Armstrong','carmstrong2p@epam.com','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=118
+INSERT INTO USER VALUES(118,'David','Bell','dbell2l@epam.com','1985-01-18',0)
+COMMIT
+DELETE FROM USER WHERE USER_ID=119
+INSERT INTO USER VALUES(119,'Paula','Berry','pberry1z@epam.ch','1985-01-18',0)
+COMMIT

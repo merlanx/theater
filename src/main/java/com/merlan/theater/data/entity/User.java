@@ -120,6 +120,16 @@ public class User {
         } else if (!lastName.equals(other.lastName)) {
             return false;
         }
+        if (birthday == null) {
+            if (other.birthday != null) {
+                return false;
+            }
+        } else if (!birthday.equals(other.birthday)) {
+            return false;
+        }
+        if (other.numberOfTickets != numberOfTickets) {
+            return false;
+        }
         return true;
     }
 

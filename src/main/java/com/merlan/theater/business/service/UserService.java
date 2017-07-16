@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -25,9 +24,10 @@ public class UserService {
      * @param user the user
      */
   public void saveUser(@Nonnull User user){
-        if(userRepository.findByEmail(user.getEmail()) == null) {
+      User dbUser = userRepository.findByEmail(user.getEmail());
+        if(dbUser == null) {
             userRepository.save(user);
-        } else {
+        } else if(!(dbUser.equals(user))) {
             userRepository.saveUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthday(), user.getNumberOfTickets());
         }
     }
@@ -63,7 +63,7 @@ public class UserService {
     /**
      * Finding user by email
      * 
-     * @param email
+     * @param emails
      *            Email of the user
      * @return found user or <code>null</code>
      */
