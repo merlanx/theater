@@ -33,7 +33,7 @@
         <input type="text" class="form-control" userId="datepicker" aria-describedby="basic-addon1"/>
     </div>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" >
         <tr>
             <td>User ID</td>
             <td>First Name</td>
@@ -42,14 +42,17 @@
             <td>Birthday</td>
             <td>Bought Tickets</td>
         </tr>
-        <tr th:each="user: ${user}">
-            <td th:text="${user.userId}">User ID</td>
-            <td th:text="${user.firstName}">First Name</td>
-            <td th:text="${user.lastName}">Last Name</td>
-            <td th:text="${user.email}">Email</td>
-            <td th:text="${user.birthday}">Birthday</td>
-            <td th:text="${user.numberOfTickets}">Total Number of Bought Tickets</td>
-        </tr>
+<#list users as user>
+        <tr th:each="user">
+            <td>${user.userId}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.birthday}</td>
+            <td>${user.numberOfTickets}</td>
+        <tr>
+</#list>
+
     </table>
 </div>
 <footer class="footer navbar-inverse navbar-fixed-bottom">

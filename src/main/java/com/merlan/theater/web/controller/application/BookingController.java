@@ -1,4 +1,4 @@
-package com.merlan.theater.web.application;
+package com.merlan.theater.web.controller.application;
 
 import com.merlan.theater.business.service.BookingService;
 import com.merlan.theater.data.entity.Event;

@@ -28,7 +28,7 @@ public class Auditorium {
     public Auditorium() {};
     public Auditorium(Long id, String name, Set<String> seats, Set<String> vipSeats ) {
         this.id = id;
-        this.name = name;
+        this.name = name.toLowerCase();
         this.numberOfSeats = seats.size();
         this.seats = seats;
         this.vipSeats = vipSeats;
@@ -43,11 +43,11 @@ public class Auditorium {
     }
 
     public String getName() {
-        return name;
+        return name.toLowerCase();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
     public int getNumberOfSeats() {

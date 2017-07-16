@@ -16,6 +16,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNull;
 
@@ -31,11 +34,23 @@ public class UserRepositoryTest {
     public ExpectedException thrown = ExpectedException.none();
     @Test
     public void testFindUserByMail() {
-        this.entityManager.persist(new User("merlan", "xie", "Dummy@epam.com", new DateTime(2017, 07, 15,00,00,00).toDate(),0));
-        User user = this.userRepository.findByEmail("DUMMY@epam.com");
-        assertThat(user.getEmail()).isEqualTo("Dummy@epam.com");
+        User dummy = new User("merlan", "xie", "Dummy@epam.com", new DateTime(2017, 07, 15,00,00,00).toDate(),0);
+        this.entityManager.persist(dummy);
+        User user = this.userRepository.findByEmail(dummy.getEmail());
+        assertThat(user.getEmail()).isEqualTo("dummy@epam.com");
         user = this.userRepository.findByEmail("DUMMY");
         assertNull(user);
+    }
+    @Test
+    public void testFindUserByMails() {
+        User dummy = new User("merlan", "xie", "Dummy@epam.com", new DateTime(2017, 07, 15,00,00,00).toDate(),0);
+        User dummy2 = new User("merlan", "xie", "Dummy_2@epam.com", new DateTime(2017, 07, 15,00,00,00).toDate(),0);
+        this.entityManager.persist(dummy);
+        this.entityManager.persist(dummy2);
+        List<User> users = this.userRepository.findByEmails(Arrays.asList(new String[]{dummy.getEmail(), dummy2.getEmail()}));
+        assertThat(users.size()).isEqualTo(2);
+        users = this.userRepository.findByEmails(Arrays.asList(new String[]{"DUMMY"}));
+        assertThat(users.size()).isEqualTo(0);
     }
 
     @Test
@@ -46,7 +61,6 @@ public class UserRepositoryTest {
         //userId is set to be started from 100 in hsqldb， there are less than 200 users in the db
         assertThat(user.getUserId()).isEqualTo(new Long("100"));
         user = this.userRepository.findByUserId(new Long("200"));
-        System.out.println("total user :" + this.userRepository.findAll().size());
         assertNull(user);
     }
 

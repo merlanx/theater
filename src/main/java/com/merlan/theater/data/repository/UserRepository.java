@@ -22,7 +22,7 @@ import java.util.Set;
 public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select u from User u where u.email in (:email)")
     List<User> findByEmails(@Param("email") List<String> email);
-    @Query("select u from User u where upper(u.email) = upper(:email)")
+    @Query("select u from User u where u.email = :email")
     User findByEmail(@Param("email") String email);
     @Query("select u from User u where u.userId = :userId")
     User findByUserId(@Param("userId") Long userId);

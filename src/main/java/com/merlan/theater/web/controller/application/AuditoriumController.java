@@ -1,4 +1,4 @@
-package com.merlan.theater.web.application;
+package com.merlan.theater.web.controller.application;
 /**
  * @author meilan_xie
  */

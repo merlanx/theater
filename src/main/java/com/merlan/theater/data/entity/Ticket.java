@@ -33,7 +33,7 @@ public class Ticket {
     public Ticket(User user, Event event, String seat) {
         this.user = user;
         this.event = event;
-        this.seat = seat;
+        this.seat = seat.toUpperCase();
     }
 
        @Override
@@ -42,11 +42,11 @@ public class Ticket {
     }
 
     public String getSeat() {
-        return seat;
+        return seat.toUpperCase();
     }
 
     public void setSeat(String seat) {
-        this.seat = seat;
+        this.seat = seat.toUpperCase();
     }
 
     public long getId() {

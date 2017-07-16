@@ -1,4 +1,4 @@
-package com.merlan.theater.web.application;
+package com.merlan.theater.web.controller.application;
 /**
  * @author meilan_xie
  */
@@ -39,7 +39,7 @@ public class UploadController {
         return "uploading";
     }
     @RequestMapping(value = "/uploaded", method = RequestMethod.POST)
-    public String uploadingPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) throws IOException {
+    public String uploadingCsvPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) throws IOException {
         List<String> emails = new ArrayList();
         String destStr = "redirect:/user/byEmails?emails=";
         for(MultipartFile uploadedFile : uploadingFiles) {

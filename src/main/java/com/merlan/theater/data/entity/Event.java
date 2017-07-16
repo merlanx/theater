@@ -36,11 +36,11 @@ public class Event {
     }
 
     public String getMovieName() {
-        return movieName;
+        return movieName.toUpperCase();
     }
 
     public void setMovieName(String movieName) {
-        this.movieName = movieName;
+        this.movieName = movieName.toUpperCase();
     }
 
     public EventRating getRating() {

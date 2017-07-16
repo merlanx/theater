@@ -27,9 +27,9 @@ public class User {
 
     public User() {};
     public User(String firstName, String lastName, String email, Date birthday, int numberOfTickets) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.firstName = firstName.toLowerCase();
+        this.lastName = lastName.toLowerCase();
+        this.email = email.toLowerCase();
         this.birthday = birthday;
         this.numberOfTickets = numberOfTickets;
     }
@@ -43,27 +43,27 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName.toLowerCase();
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = firstName.toLowerCase();
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName.toLowerCase();
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = lastName.toLowerCase();
     }
 
     public String getEmail() {
-        return email;
+        return email.toLowerCase();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public int getNumberOfTickets() {
