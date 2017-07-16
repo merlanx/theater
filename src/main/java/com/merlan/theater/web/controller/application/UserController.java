@@ -6,7 +6,6 @@ package com.merlan.theater.web.controller.application;
 import com.merlan.theater.business.service.UserService;
 import com.merlan.theater.data.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
