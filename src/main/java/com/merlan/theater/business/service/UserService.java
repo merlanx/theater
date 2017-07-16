@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,24 +22,38 @@ public class UserService {
     private UserRepository userRepository;
     /**
      * Save an user
-     * @param firstName firstName of the user
-     * @param lastName lastName of the user
-     * @param email Email of the user
-     * @param birthday Birthday of the user
-     * @param boughtTickets total amount of tickets that the user bought
-     * @return a updated/new user
+     * @param user the user
      */
-    public @Nullable User saveUser(@Nonnull String firstName, @Nullable String lastName, @Nonnull String email,@Nullable LocalDate birthday, @Nullable Integer boughtTickets){
-        return null;
+  public void saveUser(@Nonnull User user){
+        if(userRepository.findByEmail(user.getEmail()) == null) {
+            userRepository.save(user);
+        } else {
+            userRepository.saveUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthday(), user.getNumberOfTickets());
+        }
     }
     /**
      * Remove a user
      * @param email Email of the user
+     * @return removed user or empty
+     */
+    public @Nullable User removeUser(@Nonnull String email){
+        User user = userRepository.findByEmail(email);
+        if(user != null) {
+            userRepository.delete(user);
+        }
+        return user;
+    }
+    /**
+     * Remove a user
      * @param userId Id of the user
      * @return removed user or empty
      */
-    public @Nullable User removeUser(@Nonnull String email, @Nullable String userId){
-        return null;
+    public @Nullable User removeUser(@Nonnull Long userId){
+        User user = userRepository.findByUserId(userId);
+        if(user != null) {
+            userRepository.delete(user);
+        }
+        return user;
     }
     /**
      * Finding all users
@@ -51,8 +67,9 @@ public class UserService {
      *            Email of the user
      * @return found user or <code>null</code>
      */
-    public @Nullable User getUserByEmail(@Nonnull String email){
-        return userRepository.findByEmail(email);
+    public @Nullable List<User> getUserByEmail(@Nonnull String ...emails){
+        List<String> emailList = Arrays.asList(emails);
+        return userRepository.findByEmails(emailList);
     }
 
     /**

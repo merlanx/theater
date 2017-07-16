@@ -1,0 +1,2 @@
+INSERT INTO USER (LAST_NAME, FIRST_NAME, EMAIL, BIRTHDAY, NUMBER_OF_TICKETS) VALUES('Adams', 'Roy', 'raqams1v@xinhuanet.com', '1985-07-18', 10);
+

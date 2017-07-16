@@ -26,11 +26,12 @@ public class User {
     private int numberOfTickets;
 
     public User() {};
-    public User(String firstName, String lastName, String email, Date birthday) {
+    public User(String firstName, String lastName, String email, Date birthday, int numberOfTickets) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.birthday = birthday;
+        this.numberOfTickets = numberOfTickets;
     }
 
     public Long getUserId() {

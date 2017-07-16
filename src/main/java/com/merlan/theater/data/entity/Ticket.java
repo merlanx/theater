@@ -10,7 +10,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="TICKET")
-public class Ticket implements Comparable<Ticket> {
+public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="TICKET_ID")
@@ -22,7 +22,7 @@ public class Ticket implements Comparable<Ticket> {
     @JoinColumn(name = "EVENT_ID")
     private Event event;
     @Column(name = "SEAT")
-    private long seat;
+    private String seat;
     @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "PRICING_STRATEGY_ID")
     private Set<PricingStrategy> pricingStrategies = new HashSet<>();
@@ -30,7 +30,7 @@ public class Ticket implements Comparable<Ticket> {
     private double price;
 
 
-    public Ticket(User user, Event event, long seat) {
+    public Ticket(User user, Event event, String seat) {
         this.user = user;
         this.event = event;
         this.seat = seat;
@@ -41,11 +41,11 @@ public class Ticket implements Comparable<Ticket> {
         return Objects.hash(event, seat);
     }
 
-    public long getSeat() {
+    public String getSeat() {
         return seat;
     }
 
-    public void setSeat(long seat) {
+    public void setSeat(String seat) {
         this.seat = seat;
     }
 
@@ -100,23 +100,13 @@ public class Ticket implements Comparable<Ticket> {
         } else if (!event.equals(other.event)) {
             return false;
         }
-        if (seat != other.seat) {
+        if (seat == null) {
+            if (other.seat != null) {
+                return false;
+            }
+        } else if (!seat.equals(other.seat)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public int compareTo(Ticket other) {
-        if (other == null) {
-            return 1;
-        }
-        int result = Long.compare(seat, other.getSeat());
-
-        if (result == 0) {
-            result = event.getMovieName().compareTo(other.getEvent().getMovieName());
-        }
-        return result;
-    }
-
 }

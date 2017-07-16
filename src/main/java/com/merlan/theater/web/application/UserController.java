@@ -12,32 +12,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/save", method= RequestMethod.POST)
+    @RequestMapping(value="/save", method= RequestMethod.GET)
     public String saveUser(@RequestParam(value="firstName", required=true)String firstName,
                            @RequestParam(value="LastName", required=false)String lastName,
-                           @RequestParam(value="email", required=true)String emailString,
-                           @RequestParam(value="birthday", required=false)LocalDate birthday,
+                           @RequestParam(value="email", required=true)String email,
+                           @RequestParam(value="birthday", required=false)Date birthday,
+                           @RequestParam(value="boughtTickets", required=false)int boughtTickets,
                            Model model){
-        User user = this.userService.saveUser(firstName, lastName, emailString, birthday, null);
+        User user = new User(firstName, lastName, email, birthday, boughtTickets);
+        this.userService.saveUser(user);
         model.addAttribute("user", user);
         return "user";
     }
 
-    @RequestMapping(value="/remove", method= RequestMethod.POST)
+    @RequestMapping(value="/remove/byEmail", method= RequestMethod.GET)
     public String removeUser(@RequestParam(value="email", required=true)String emailString,
-                           @RequestParam(value="userId", required=false)String userId,
                            Model model){
-        User user = this.userService.removeUser(emailString, userId);
+        User user = this.userService.removeUser(emailString);
+        model.addAttribute("user", user);
+        return "user";
+    }
+    @RequestMapping(value="/remove/byId", method= RequestMethod.GET)
+    public String removeUser(@RequestParam(value="userId", required=false)Long userId,
+                          Model model){
+        User user = this.userService.removeUser(userId);
         model.addAttribute("user", user);
         return "user";
     }
@@ -57,8 +65,14 @@ public class UserController {
     }
     @RequestMapping(value="/byEmail", method= RequestMethod.GET)
     public String getUserByEmail(@RequestParam(value="email", required=true)String email, Model model){
-        User user = this.userService.getUserByEmail(email);
+        List<User> user = this.userService.getUserByEmail(email);
         model.addAttribute("user", user);
         return "user";
    }
+    @RequestMapping(value="/byEmails", method= RequestMethod.GET)
+    public String getUserByEmails(@RequestParam(value="emails", required=true) String[] emails, Model model){
+        List<User> users = this.userService.getUserByEmail(emails);
+        model.addAttribute("user", users);
+        return "user";
+    }
 }
